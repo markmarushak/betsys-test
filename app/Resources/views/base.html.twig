@@ -1,0 +1,181 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+    {#<head>#}
+        {#<meta charset="UTF-8" />#}
+        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
+        {#{% block stylesheets %}{% endblock %}#}
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+    {#</head>#}
+    {#<body>#}
+        {#{% block body %}{% endblock %}#}
+        {#{% block javascripts %}{% endblock %}#}
+    {#</body>#}
+{#</html>#}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% set page_title="The test task for Betsys" %}
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {#<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->#}
+    {#{% stylesheets '%kernel.root_dir%/Resources/assets/css/*' filter='cssrewrite' %}#}
+        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    <!--[if lte IE 9]><!--<link rel="stylesheet" href="assets/css/ie9.css" />--><![endif]-->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body class="subpage">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            <div class="row">
+                <div class="12u">
+
+                    <!-- Logo -->
+                    <h1><a href="#" id="logo">Betsys</a></h1>
+
+                    <!-- Nav -->
+                    <nav id="nav">
+                        {{ knp_menu_render('main', {'template': "menu/menu.html.twig"}) }}
+                    </nav>
+
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Content -->
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)">
+
+                        <!-- Sidebar -->
+                        <section>
+                            <header>
+                                <h2>Groups</h2>
+                            </header>
+                            <ul class="link-list">
+                                {{ knp_menu_render('sidebar_groups') }}
+                            </ul>
+                        </section>
+
+                        <section>
+                            <header>
+                                <h2>Suppliers</h2>
+                            </header>
+                            <ul class="link-list">
+                                {{ knp_menu_render('sidebar_suppliers') }}
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="9u 12u(mobile) important(mobile)">
+                        <!-- Main Content -->
+                        {% block breadcrumbs %}
+                            <div class="breadcrumb">
+                                {% if not menuName is defined %}
+                                    {% set menuName = 'main' %}
+                                {% endif %}
+                                {% set current_item = knp_menu_get_current_item(menuName) %}
+                                {% set breadcrumbs = knp_menu_get_breadcrumbs_array(current_item) %}
+                                {% for breadcrumb_item in breadcrumbs %}
+                                    {% if not loop.last %}
+                                        <a href="{{ breadcrumb_item.uri }}">{{ breadcrumb_item.label }}</a>&nbsp;&raquo;
+                                    {% else %}
+                                        <span class="active">{{ breadcrumb_item.label }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endblock %}
+
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+            <div class="row">
+                <div class="8u 12u(mobile)">
+
+                    <!-- Links -->
+                    <section>
+                        <h2>Links to Important Stuff</h2>
+                        <div>
+                            <div class="row">
+                                <div class="3u 12u(mobile)">
+                                    <ul class="link-list last-child">
+                                        <li><a href="#">Neque amet dapibus</a></li>
+                                        <li><a href="#">Sed mattis quis rutrum</a></li>
+                                        <li><a href="#">Accumsan suspendisse</a></li>
+                                        <li><a href="#">Eu varius vitae magna</a></li>
+                                    </ul>
+                                </div>
+                                <div class="3u 12u(mobile)">
+                                    <ul class="link-list last-child">
+                                        <li><a href="#">Neque amet dapibus</a></li>
+                                        <li><a href="#">Sed mattis quis rutrum</a></li>
+                                        <li><a href="#">Accumsan suspendisse</a></li>
+                                        <li><a href="#">Eu varius vitae magna</a></li>
+                                    </ul>
+                                </div>
+                                <div class="3u 12u(mobile)">
+                                    <ul class="link-list last-child">
+                                        <li><a href="#">Neque amet dapibus</a></li>
+                                        <li><a href="#">Sed mattis quis rutrum</a></li>
+                                        <li><a href="#">Accumsan suspendisse</a></li>
+                                        <li><a href="#">Eu varius vitae magna</a></li>
+                                    </ul>
+                                </div>
+                                <div class="3u 12u(mobile)">
+                                    <ul class="link-list last-child">
+                                        <li><a href="#">Neque amet dapibus</a></li>
+                                        <li><a href="#">Sed mattis quis rutrum</a></li>
+                                        <li><a href="#">Accumsan suspendisse</a></li>
+                                        <li><a href="#">Eu varius vitae magna</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+                <div class="4u 12u(mobile)">
+
+                    <!-- Blurb -->
+                    <section>
+                        <h2>An Informative Text Blurb</h2>
+                        <p>
+                            Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. Suspendisse eu
+                            varius nibh. Suspendisse vitae magna eget odio amet mollis. Duis neque nisi,
+                            dapibus sed mattis quis, sed rutrum accumsan sed. Suspendisse eu varius nibh
+                            lorem ipsum amet dolor sit amet lorem ipsum consequat gravida justo mollis.
+                        </p>
+                    </section>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+{% block javascripts %}{% endblock %}
+</body>
+</html>

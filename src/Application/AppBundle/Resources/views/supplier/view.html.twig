@@ -1,0 +1,24 @@
+{% extends '@App/supplier/supplier_base.html.twig' %}
+
+{% block content %}
+    <header>
+        <h2>{{ supplier.name }}</h2>
+    </header>
+    <h3>Email:</h3>
+    <p>{{ supplier.email }}</p>
+
+    <h3>Address:</h3>
+    <p>{{ supplier.address }}</p>
+
+    <h3>Phone:</h3>
+    <p>{{ supplier.phone }}</p>
+
+    <h3>Groups:</h3>
+    <ul>
+        {% for group in supplier.groups %}
+            <li><a href="{{ url("supplier_view", {'id': group.id}) }}">{{ group.name }}</a></li>
+        {% else %}
+            <li>No groups to which this supplier delivers something are found</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

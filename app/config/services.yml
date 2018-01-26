@@ -1,0 +1,45 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+
+  app.security.authentication_success_handler:
+        class: AppBundle\Security\AuthenticationSuccessHandler
+        arguments: ['@router', '@security.context']
+
+  admin.group:
+      class: AppBundle\Admin\GroupAdmin
+      arguments: [null, AppBundle\Entity\Group, SonataAdminBundle:CRUD]
+      tags:
+          - { name:  sonata.admin, manager_type: orm, group: Classification, label: Group }
+
+  admin.supplier:
+      class: AppBundle\Admin\SupplierAdmin
+      arguments: [~, AppBundle\Entity\Supplier, SonataAdminBundle:CRUD]
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: Classification, label: Supplier }
+
+  app.repository.group:
+      class: AppBundle\Entity\Repository\GroupRepository
+      factory: ["@doctrine.orm.default_entity_manager", getRepository]
+      arguments:
+          - AppBundle\Entity\Group
+
+  app.repository.supplier:
+      class: AppBundle\Entity\Repository\SupplierRepository
+      factory: ["@doctrine.orm.default_entity_manager", getRepository]
+      arguments:
+          - AppBundle\Entity\Supplier
+
+  app.menu.menu_builder:
+      class: AppBundle\Menu\MenuBuilder
+      arguments: [ "@knp_menu.factory"]
+      calls:
+          - [ setContainer, ['@service_container']]
+      tags:
+          - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+          - { name: knp_menu.menu_builder, method: createSidebarGroupsMenu, alias: sidebar_groups }
+          - { name: knp_menu.menu_builder, method: createSidebarSuppliersMenu, alias: sidebar_suppliers }
+          - { name: knp_menu.menu_builder, method: createSuppliersBreadcrumbs, alias: suppliers_breadcrumbs }

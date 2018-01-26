@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <header>
+        <h2>Statement of works</h2>
+    </header>
+    <h3>Task:</h3>
+
+    <p>An internal department come up with request to build a simple web application where they can store office suppliers details.</p>
+
+    <h3>Functional requirements are:</h3>
+
+    <p>1) A supplier is identified by Name, Address, Email Address and Telephone number.</p>
+    <p>2) Each supplier belongs into one or more Groups. Groups are defined simply by its Name:
+        "Cleaners", "Office supply (paper, envelopes, etc)", "Telephone service" and "Security".</p>
+    <p>3) Web application should allow Listing, Adding, Updating and Deleting Suppliers.
+        When Listing, Adding or Updating a Supplier, Group(s) must be shown (List) or possible to associate
+        or de-associate with Supplier (Add, Update).</p>
+    <p>4) Web application should allow listing all Suppliers in a system or listing Suppliers per Group.</p>
+    <p>5) Implement validation for Email Address (validates format of email address) and
+        Telephone number (validates 9 digit number, for simplicity please do not implement any special telephone number
+        rules. In our case, valid telephone number is 9 digit number with no spaces).</p>
+
+    <h3>Requirements</h3>
+
+    <ul>
+        <li>- Ideally use Nette framework and MySQL db</li>
+        <li>- Meet above defined functional requirements</li>
+        <li>- Optional “nice to have” requirements</li>
+    </ul>
+{% endblock %}

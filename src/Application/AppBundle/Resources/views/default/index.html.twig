@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+    <section>
+        <header>
+            <h2>Welcome to Betsys the test task implementation project!</h2>
+        </header>
+
+        <p>You can find the Statement of works <a href="{{ url('statement_of_works') }}" target="_blank">on the following page</a>.</p>
+
+        <p>You can check <a href="{{ url('group_index') }}" target="_blank"><strong>Groups</strong></a>
+            and <a href="{{ url('supplier_index') }}" target="_blank"><strong>Suppliers</strong></a>.</p>
+
+        <p>You can add and/or change groups and/or suppliers in the
+            <a href="{{ url("sonata_admin_dashboard") }}" target="_blank">administration panel</a>.
+            An authorization is needed.
+            You had to set credentials during the project deployment.
+        </p>
+    </section>
+
+{% endblock %}

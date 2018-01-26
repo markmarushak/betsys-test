@@ -1,0 +1,9 @@
+{#{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}#}
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% for val in value %}
+        {{ val.name }}
+        <br/>
+    {% endfor %}
+{% endblock %}

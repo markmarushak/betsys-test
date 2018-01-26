@@ -1,0 +1,18 @@
+{% extends '@App/group/group_base.html.twig' %}
+
+{% block content %}
+    <header>
+        <h2>Groups list</h2>
+        <h3>Sorted by id</h3>
+    </header>
+    <ul>
+        {% for group in groups %}
+            <li><a href="{{ url("group_view", {'id': group.id }) }}">{{ group.name }}</a></li>
+            <li><ul>
+                    {% for supplier in group.suppliers %}
+                        <li><a href="{{ url("supplier_view", {'id': supplier.id}) }}">{{ supplier.name }}</a></li>
+                    {% endfor %}
+                </ul></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
