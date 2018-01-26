@@ -64,6 +64,11 @@ class Supplier
     {
         $this->groups = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->getName() ?: '';
+    }
 
     /**
      * @return int

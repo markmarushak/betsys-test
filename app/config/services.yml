@@ -5,10 +5,6 @@ parameters:
 
 services:
 
-  app.security.authentication_success_handler:
-        class: AppBundle\Security\AuthenticationSuccessHandler
-        arguments: ['@router', '@security.context']
-
   admin.group:
       class: AppBundle\Admin\GroupAdmin
       arguments: [null, AppBundle\Entity\Group, SonataAdminBundle:CRUD]
